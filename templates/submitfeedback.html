@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+  <div class="mr-md-3 pt-2 px-3 pt-md-3 px-md-5 text-center">
+    <form method="POST" class="form-group">
+      {{ form.csrf_token }}
+      <div class="my-3 p-3">
+        <h2>
+          Submit your feedback
+        </h2>
+        <p>Please share in detail what we can do to improve your user experience</p>
+      </div>
+      {{ form.feedback_text(id_="feedbackInput", class_="form-control", placeholder="Enter your feedback here...", style="height: 150px; border-radius: 21px;") }}
+      {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+              <p id="errorField" class="text-danger">{{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+      {% endif %}
+      <div class="mt-3 p-3">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

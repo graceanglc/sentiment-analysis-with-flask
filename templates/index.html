@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+  <div class="mt-100">
+    <div class="mr-md-3 pt-2 px-3 pt-md-3 px-md-5 text-center">
+      <h2>Feedback</h2>
+    </div>
+    <div>
+      <form action="{{ url_for('get_filtered_feedback') }}" method="GET">
+          <select class="form-select" name="sentiment">
+              <option value="">All</option>
+              <option value="Positive" {% if sentiment == 'Positive' %} selected {% endif %}>Positive</option>
+              <option value="Negative" {% if sentiment == 'Negative' %} selected {% endif %}>Negative</option>
+              <option value="Neutral" {% if sentiment == 'Neutral' %} selected {% endif %}>Neutral</option>
+          </select>
+          <button class="btn btn-outline-primary btn-sm" type="submit">Filter</button>
+      </form>
+    </div>
+      {% if list_feedback %}
+          {% for feedback in list_feedback %}
+            <div class="card my-3">
+              <div class="card-body">
+                <div class="card-title">
+                  <p>{{ feedback.feedback_text }}</p>
+                </div>
+                <div style="display: flex; align-items:baseline;">
+                  <p>Sentiment:</p>
+                  <div class="ml-2">
+                    {% if feedback.sentiment_result == 'Positive' %}
+                    <span class="badge badge-pill badge-success">{{ feedback.sentiment_result}}</span>
+                    {% elif feedback.sentiment_result == 'Negative' %}
+                    <span class="badge badge-pill badge-danger">{{ feedback.sentiment_result}}</span>
+                    {% elif feedback.sentiment_result == 'Neutral' %}
+                    <span class="badge badge-pill badge-info">{{ feedback.sentiment_result}}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+      {% else %}
+          <p>No feedback listed yet</p>
+      {% endif %}
+  </div>
+</div>
+{% endblock %}
+
