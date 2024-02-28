@@ -18,19 +18,14 @@ To install, follow these steps:
    git clone https://github.com/graceanglc/sentiment-analysis-with-flask.git
    ```
 
-2. Navigate to the project directory:
-   ```
-   cd flask
-   ```
-  
-3. Make sure to have python version >= 3 and pip version >= 3 as well
+2. Make sure to have python version >= 3 and pip version >= 3 as well
 
-4. Install dependencies using pip:
+3. Install dependencies using pip:
    ```
    pip install -r requirements.txt
    ```
 
-5. Run the application:
+4. Run the application:
   - activate the environment: `source env/bin/activate`
   - Run: `export FLASK_APP=app && export FLASK_ENV=development`
   - Lastly, run the application using
@@ -42,8 +37,8 @@ To install, follow these steps:
 ## Usage
 Once the application is running, open your web browser and navigate to http://localhost:5000. You will see the homepage, where you can add new feedback
 
-![Screenshot](screenshots/home-page.png)
-![Screenshot](screenshots/submit-feedback.png)
+![Screenshot](screenshot/home-page.png)
+![Screenshot](screenshot/submit-feedback.png)
 
 ## Configuration
 This app uses environment variables for configuration. You can customize the following settings by setting the corresponding environment variables:
